@@ -25,8 +25,8 @@ provider:
 package: 
   individually: true
   patterns:
-    - "!.dynamodb"
-    - "!.node_modules"
+    - "!*/**"
+   
 
 custom:
   dynamodb:
@@ -49,6 +49,9 @@ plugins:
 functions:
   create-empleados:
     handler: createempleados.createEmpleados
+    package:    
+      patterns:
+        - "createempleados.js" 
     events:
       - http:
           path: empleados
@@ -57,6 +60,9 @@ functions:
 
   get-empleados:
     handler: getempleados.getEmpleados
+    package:    
+      patterns:
+        - "getempleados.js"  
     events: 
       - http:
           path: empleados/{id}
@@ -66,6 +72,9 @@ functions:
 
   get-all-empleados:
     handler: getallempleados.getAllEmpleados
+    package:    
+      patterns:
+        - "getallempleados.js" 
     events: 
       - http:
           path: empleados/all
@@ -76,6 +85,9 @@ functions:
 
   update-empleados:
     handler: updateempleados.updateEmpleados
+    package:    
+      patterns:
+        - "updateempleados.js" 
     events: 
       - http:
           path: empleados/{id}
@@ -84,6 +96,9 @@ functions:
 
   delete-empleados:
     handler: deleteempleados.deleteEmpleados
+    package:    
+      patterns:
+        - "deleteempleados.py" 
     runtime: python3.9
     events: 
       - http:
@@ -93,6 +108,9 @@ functions:
 
   welcome:
     handler: index.handler
+    package:    
+      patterns:
+        - "handler.js" 
     events: 
       - http:
           path: /hello
